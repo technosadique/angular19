@@ -1,0 +1,5 @@
+Ref URL: https://www.itsolutionstuff.com/post/angular-19-crud-application-tutorial-exampleexample.html
+
+to run this project you need to start two servers in your local machine
+C:\Users\sadik\angular19\crud-app>ng serve
+C:\Users\sadik\api>npx json-server db.json
