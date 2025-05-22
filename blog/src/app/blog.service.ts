@@ -10,7 +10,7 @@ export class BlogService {
 
   constructor(private http:HttpClient) { }
 
-getusers():Observable<Blog[]>{
+getblogs():Observable<Blog[]>{
 const url="http://localhost:3000/blogs"
 return this.http.get<Blog[]>(url)
 }
@@ -22,14 +22,6 @@ const url="http://localhost:3000/blogs"
     
 }
 
-
-
-selectSelectedUser(id:string):Observable<Blog>{ 
-const url="http://localhost:3000/blogs"  
-    return this.http.get<Blog>(url+"/"+id)    
-  }
-
-
   updateUser(blog:Blog):Observable<Blog>{  
 const url="http://localhost:3000/blogs"   
     return this.http.put<Blog>(url+"/"+blog.id,blog)    
@@ -37,10 +29,19 @@ const url="http://localhost:3000/blogs"
 
 
 
-  deleteUser(id:string):Observable<Blog>{ 
+  deleteBlog(id:string):Observable<Blog>{ 
 const url="http://localhost:3000/blogs"     
     return this.http.delete<Blog>(url+"/"+id) 
   }
+
+
+find(id:string):Observable<Blog>{ 
+const url="http://localhost:3000/blogs"  
+    return this.http.get<Blog>(url+"/"+id)    
+  }
+
+
+
 
 
 }

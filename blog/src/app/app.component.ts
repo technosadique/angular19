@@ -13,30 +13,30 @@ import { NgIf } from '@angular/common';
 export class AppComponent {
 
 blogdata:Blog[]=[]
-selecteduser: Blog|undefined;
+selectedblog: Blog|undefined;
 successMessage='';
 constructor(private blogservice:BlogService){}
 
 
 ngOnInit(){
-this.blogservice.getusers().subscribe((data:Blog[])=>{
+this.blogservice.getblogs().subscribe((data:Blog[])=>{
   this.blogdata=data
 })
 }
 
 
 
-addUser(user:Blog){
+addBlog(blog:Blog){
 
-if(!this.selecteduser){
-  this.blogservice.saveUser(user).subscribe((data:Blog)=>{
+if(!this.selectedblog){
+  this.blogservice.saveUser(blog).subscribe((data:Blog)=>{
   console.log(data);
   this.ngOnInit()
   this.successMessage="Added successfully"
   })
 }
 else{
-    const prodData={...user,id:this.selecteduser.id}
+    const prodData={...blog,id:this.selectedblog.id}
 this.blogservice.updateUser(prodData).subscribe((data)=>{
   if(data){
     this.ngOnInit()
@@ -47,19 +47,19 @@ this.blogservice.updateUser(prodData).subscribe((data)=>{
 }
 
 
-selectUser(id:string){
-this.blogservice.selectSelectedUser(id).subscribe((data:Blog)=>{
+selectBlog(id:string){
+this.blogservice.find(id).subscribe((data:Blog)=>{
   console.log(data);
-  this.selecteduser=data
+  this.selectedblog=data
   })
 }
 
 
-deleteUser(id:string){
+deleteBlog(id:string){
 const confirmed=window.confirm("Are you sure to delete this record?");
 
 if(confirmed){
-  this.blogservice.deleteUser(id).subscribe((data:Blog)=>{
+  this.blogservice.deleteBlog(id).subscribe((data:Blog)=>{
   if(data){
    this.ngOnInit()
      this.successMessage="Deleted successfully"
