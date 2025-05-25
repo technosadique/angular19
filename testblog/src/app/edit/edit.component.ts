@@ -4,6 +4,7 @@ import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { Blog } from '../blog';
 import { FormsModule } from '@angular/forms';
 import { NgIf } from '@angular/common';
+import { MessageService } from '../message.service';
 
 @Component({
   selector: 'app-edit',
@@ -13,8 +14,8 @@ import { NgIf } from '@angular/common';
 })
 export class EditComponent {
   selectedblog: Blog | undefined
-
-  constructor(private blogservice: BlogService, private router: Router, private route: ActivatedRoute) { }
+  successMessage = ''
+  constructor(private blogservice: BlogService, private router: Router, private route: ActivatedRoute, private messageService: MessageService) { }
   id!: string;
 
   ngOnInit(): void {
@@ -28,12 +29,9 @@ export class EditComponent {
 
   saveblog(blog: Blog) {
     this.blogservice.updateblog(this.id, blog).subscribe((data: any) => {
-      console.log('Blog updated successfully!');
+      this.messageService.setMessage('Blog updated successfully!');
       this.router.navigate(['/index']);
     })
   }
-
-
-
 
 }

@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
   
 import { PostService } from '../post.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MessageService } from '../../message.service';
 import { Post } from '../post';
 import { ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
   
@@ -18,6 +19,7 @@ export class EditComponent {
   id!: string;
   post!: Post;
   form!: FormGroup;
+  successMessage = ''
       
   /*------------------------------------------
   --------------------------------------------
@@ -27,6 +29,7 @@ export class EditComponent {
   constructor(
     public postService: PostService,
     private route: ActivatedRoute,
+	private messageService: MessageService,
     private router: Router
   ) { }
       
@@ -65,7 +68,7 @@ export class EditComponent {
   submit(){
     console.log(this.form.value);
     this.postService.update(this.id, this.form.value).subscribe((res:any) => {
-         console.log('Post updated successfully!');
+         this.messageService.setMessage('Post updated successfully!');
          this.router.navigateByUrl('post/index');
     })
   }

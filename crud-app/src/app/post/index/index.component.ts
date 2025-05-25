@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { PostService } from '../post.service';
 import { Post } from '../post';
+import { MessageService } from '../../message.service';
   
 @Component({
   selector: 'app-index',
@@ -15,13 +16,15 @@ import { Post } from '../post';
 export class IndexComponent {
   
   posts: Post[] = [];
+  successMessage=''
+  
       
   /*------------------------------------------
   --------------------------------------------
   Created constructor
   --------------------------------------------
   --------------------------------------------*/
-  constructor(public postService: PostService) { }
+  constructor(public postService: PostService,private messageService: MessageService) { }
       
   /**
    * Write code on Method
@@ -29,6 +32,10 @@ export class IndexComponent {
    * @return response()
    */
   ngOnInit(){
+	this.successMessage = this.messageService.getMessage();
+	if (this.successMessage) {
+	setTimeout(() => this.successMessage = '', 3000);
+	}
     this.postService.getAll().subscribe((data: Post[])=>{
       this.posts = data;
       console.log(this.posts);
@@ -43,7 +50,7 @@ export class IndexComponent {
 deletePost(id:string){
 const confirmed = window.confirm('Are you sure you want to delete this record?');
 if(confirmed){
-
+this.messageService.setMessage('Post deleted successfully!');
 this.postService.delete(id).subscribe((data)=>{
   if(data){
    this.ngOnInit()

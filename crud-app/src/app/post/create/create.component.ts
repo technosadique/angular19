@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
   
 import { PostService } from '../post.service';
 import { Router } from '@angular/router';
+import { MessageService } from '../../message.service';
 import { ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
   
 @Component({
@@ -23,7 +24,8 @@ export class CreateComponent {
   --------------------------------------------*/
   constructor(
     public postService: PostService,
-    private router: Router
+    private router: Router,
+	private messageService: MessageService
   ) { }
       
   /**
@@ -56,7 +58,7 @@ export class CreateComponent {
   submit(){
     console.log(this.form.value);
     this.postService.create(this.form.value).subscribe((res:any) => {
-         console.log('Post created successfully!');
+         this.messageService.setMessage('Post created successfully!');
          this.router.navigateByUrl('post/index');
     })
   }
