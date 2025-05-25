@@ -1,0 +1,26 @@
+<div class="container mt-2">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h2 class="mb-0">Blog Table</h2>
+    <a routerLink="/create" class="btn btn-success">Create Blog</a>
+  </div>
+
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Content</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for(blog of blogdata;track blog){
+      <tr>
+        <td>{{blog.title}}</td>
+        <td>{{blog.content}}</td>
+        <td><button (click)="deleteblog(blog.id)" class="btn btn-danger">Delete</button> <a
+            [routerLink]="['',blog.id, 'edit']" class="btn btn-primary m-2">Edit</a></td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>

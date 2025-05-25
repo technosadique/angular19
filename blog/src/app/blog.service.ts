@@ -16,7 +16,7 @@ return this.http.get<Blog[]>(url)
 }
 
 
-saveUser(blog:Blog):Observable<Blog>{
+saveBlog(blog:Blog):Observable<Blog>{
 const url="http://localhost:3000/blogs"    
     return this.http.post<Blog>(url,blog)
     

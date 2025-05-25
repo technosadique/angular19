@@ -1,0 +1,26 @@
+<div class="container">
+  <h2>Blog form</h2>
+  <form #blogForm="ngForm" (ngSubmit)="saveblog(blogForm.value)">
+    <div class="form-group">
+      <label for="title">Title:</label>
+      <input required #title="ngModel" type="text" class="form-control" id="title" placeholder="Enter title"
+        name="title" ngModel>
+    </div>
+    <div *ngIf="title.invalid && title.touched" class="text-danger">
+      Title is required
+    </div>
+
+    <div class="form-group">
+      <label for="content">Content:</label>
+      <input required #content="ngModel" type="content" class="form-control" id="content" placeholder="Enter content"
+        name="content" ngModel>
+    </div>
+    <div *ngIf="content.invalid && content.touched" class="text-danger">
+      Content is required
+    </div>
+
+
+    <button class="btn btn-primary" [disabled]="blogForm.invalid">Add</button> <a class="btn btn-secondary m-2"
+      routerLink="/index">Cancel</a>
+  </form>
+</div>

@@ -29,7 +29,7 @@ this.blogservice.getblogs().subscribe((data:Blog[])=>{
 addBlog(blog:Blog){
 
 if(!this.selectedblog){
-  this.blogservice.saveUser(blog).subscribe((data:Blog)=>{
+  this.blogservice.saveBlog(blog).subscribe((data:Blog)=>{
   console.log(data);
   this.ngOnInit()
   this.successMessage="Added successfully"
