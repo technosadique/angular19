@@ -1,19 +1,18 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { User } from './user';
 import { UserService } from './user.service';
 import { FormsModule, NgForm } from '@angular/forms';
-import { NgFor, NgIf } from '@angular/common';
+import { NgFor } from '@angular/common';
 
 @Component({
   selector: 'app-root',
     templateUrl: './app.component.html',
   styleUrl: './app.component.css',
-  imports: [FormsModule,NgFor,NgIf]
+  imports: [FormsModule,NgFor]
 })
 export class AppComponent implements OnInit {
   users: User[] = [];
   newUser: User = { id: 0, name: '', email: '' };
-@ViewChild('userForm', { static: false }) form!: NgForm;  // Declare form reference
 
   constructor(private userService: UserService) {}
 
@@ -54,14 +53,6 @@ export class AppComponent implements OnInit {
   clearAll() {
     this.userService.clearUsers();
     this.loadUsers();
-  }
-
-resetForm() {
-    if (this.form) {
-      this.form.reset();  // Safely reset only if form is defined
-    } else {
-      console.warn('Form not yet available');
-    }
   }
 
 }

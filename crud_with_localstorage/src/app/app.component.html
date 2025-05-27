@@ -13,9 +13,7 @@
       <button type="submit" class="btn btn-primary">
         {{ newUser.id ? 'Update' : 'Add' }} User
       </button>
-      <button *ngIf="newUser.id" type="button" class="btn btn-secondary" (click)="resetForm()">
-        Cancel
-      </button>
+      
     </div>
   </form>
 
