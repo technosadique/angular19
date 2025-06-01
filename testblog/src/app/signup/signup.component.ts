@@ -17,10 +17,9 @@ export class SignupComponent {
     password: ''
   };
 
-
   constructor(private auth: AuthService) {}
 
-  onSignup() {
+  onSignup() { 
     this.auth.signup(this.user);
   }
 }

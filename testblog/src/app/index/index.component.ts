@@ -17,6 +17,7 @@ export class IndexComponent {
   selectedblog:Blog|undefined
   successMessage=''
   userEmail: string = '';
+  
 constructor(private blogservice: BlogService,private messageService: MessageService,private router: Router,private auth: AuthService){}
 
 
@@ -25,6 +26,7 @@ ngOnInit(){
   if (this.successMessage) {
     setTimeout(() => this.successMessage = '', 3000);
   }
+  console.log(localStorage)
   this.userEmail = localStorage.getItem('userEmail') || 'Unknown User';
   this.blogservice.getblog().subscribe((data:Blog[])=>{
     this.blogdata=data

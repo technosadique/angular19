@@ -10,6 +10,7 @@ private isAuthenticated = false;
 
    signup(user: any) {
     localStorage.setItem(user.email, JSON.stringify(user));
+
     alert('Signup successful!');
     this.router.navigate(['/login']);
   }
