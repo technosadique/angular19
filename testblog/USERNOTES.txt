@@ -1,0 +1,21 @@
+Ref URL: https://www.itsolutionstuff.com/post/angular-19-crud-application-tutorial-exampleexample.html
+
+to run this project you need to start two servers in your local machine
+C:\Users\sadik\angular19\blog>ng serve
+C:\Users\sadik\api>npx json-server db.json
+
+#how to add bootstrap css 
+npm install bootstrap --save
+
+angular.json 
+----------------
+ "styles": [
+        "node_modules/bootstrap/dist/css/bootstrap.min.css",
+        "src/styles.css"
+      ],
+
+#how to create login,signup and logout btn 
+- create login module
+- create signup module 
+- create auth module 
+- update app.routes.ts as import { AuthGuard } from './auth/auth.guard';, { path: 'index', component: IndexComponent,canActivate: [AuthGuard] },

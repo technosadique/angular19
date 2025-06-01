@@ -1,0 +1,18 @@
+<style>
+.douhchartcss{height:315px;width:400px;margin-left:-45px;}
+@media screen and (max-width: 768px) {
+    .douhchartcss{height:315px;width:400px;margin-left:-107px;}
+}
+
+@media screen and (max-width: 450px) {
+    .douhchartcss{height:315px;width:400px;margin-left:-55px;}
+}
+
+</style>
+<div class="douhchartcss">
+    <canvas baseChart
+    [data]="doughnutChartData"    
+    [labels]="doughnutChartLabels"    
+    [chartType]="doughnutChartType">
+  </canvas>
+</div>

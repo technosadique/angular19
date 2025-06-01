@@ -1,0 +1,164 @@
+<div class="container-fluid">
+  <div class="row content">
+    
+    <br>
+    
+    <div class="col-sm-15">
+       
+      <div class="row">
+        <div class="col-sm-4">
+            <div class="well" style="background-color:#FFF;border-left: 4px solid green;border-radius: 12px;">
+              <p><b>$ 569,215.90</b></p>
+              <div class="editimgcss"><img src="assets/editimg.png" style="margin-top:-54px;"></div>
+              <div id="loader1"></div> 
+              <p>Total revenue this year</p>
+            </div>
+        </div>
+
+        <div class="col-sm-4">
+            <div class="well" style="background-color:#FFF;border-left: 4px solid red;border-radius: 12px;">
+                <p><b>$ 9,724.68</b></p> 
+                <div class="editimgcss"><img src="assets/editimg.png" style="margin-top:-54px;"></div>
+                <div id="loader2"></div>
+                <p>Total revenue this month</p>
+            </div>
+        </div>
+
+        <div class="col-sm-4">
+            <div class="well" style="background-color:#FFF;border-left: 4px solid blue;border-radius: 12px;">
+                <p><b>$ 485.45</b></p> 
+                <div class="editimgcss"><img src="assets/editimg.png" style="margin-top:-54px;"></div>
+                <div id="loader3"></div>
+                <p>Total revenue this week</p>
+            </div>
+        </div>
+       
+      </div>
+      <div class="row">
+        <div class="col-sm-4">
+            <div class="well" style="height:360px;background-color:#FFF;border-radius: 12px;">
+                <h4>Revenue <span style="margin-left:90px;"><button class="revenuebutton1">Year</button><button class="revenuebutton2">Month</button></span></h4>
+                <div class="editimgcss"><img src="assets/editimg.png" style="margin-top:-54px;"></div>
+            
+                <p><app-line-chart></app-line-chart></p> 
+            
+            <div class="revfooter">
+                <ul class="list-horizontal1">
+                    <li>Downloads</li>     
+                  </ul>  
+                  <ul class="list-horizontal2" style="margin-left: 96px; margin-top: -39px;">    
+                    <li>Users</li>    
+                  </ul>   
+                   <ul class="list-horizontal3"  style="margin-left: 155px;margin-top: -38px;">    
+                    <li>Messages</li>    
+                  </ul>
+                </div>
+            
+          </div>
+        </div>
+        <div class="col-sm-8">
+            <div class="well" style="height:360px;background-color:#FFF;border-radius: 12px;">
+                <h4>Subscriptions <span class="subscss"><button class="subscriptionbutton2">Year</button><button class="subscriptionbutton2">Week</button><button class="subscriptionbutton1">Day</button></span></h4>
+               
+                <div class="editimgcss2"><img src="assets/editimg.png" style="margin-top:-54px;"></div>
+                <p><app-bar-chart></app-bar-chart></p> 
+                <div class="revbarfooter"><ul class="list-horizontal1">
+                    <li>Downloads</li>     
+                  </ul>  
+                  <ul class="list-horizontal2" style="margin-left: 93px;margin-top: -39px;">    
+                    <li>Users</li>    
+                  </ul></div>
+               
+                 
+          </div>
+        </div>
+        
+      </div>
+      <div class="row">
+        <div class="col-sm-4">
+            <div class="well" style="height:310px;background-color:#FFF;border-radius: 12px;">
+            <h4>Users</h4>
+            <div class="editimgcss"><img src="assets/editimg.png" style="margin-top:-54px;"></div>
+            <table width="100%">
+               <tr *ngFor="let user of users">
+                <td>
+                    <img src="{{ user.image }}" width="20" height="20" style="display: inline-block;
+                    height: 27px;
+                    width: 30px;
+                    border-radius: 50%;
+                    background-size: cover;
+                    margin-right: 7px;padding: 4px;">
+                  </td>
+                  <td width="40%">
+                  {{ user.name }}
+                </td>
+                <td width="40%">
+                    <button [ngClass]="{'depositbtn':user.status == 'DEPOSIT','conclutionbtn':user.status == 'CONCLUSION'}">{{ user.status }}</button>
+                </td>
+                <td>
+                    {{ user.cost }}
+                </td>
+                </tr>
+            </table>
+          </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="well" style="height:310px;background-color:#FFF;border-radius: 12px;">
+                <h4>Revenue</h4>
+                <div class="editimgcss"><img src="assets/editimg.png" style="margin-top:-54px;"></div>
+                <table width="100%">
+                    <tr *ngFor="let revenue of userrevenue" [ngClass]="{'rclass1':revenue.revper == '60%','rclass2':revenue.revper == '50%', 'rclass3':revenue.revper == '80%', 'rclass4':revenue.revper == '10%'}">
+                    <td width="600" style="padding: 4px;">{{revenue.title}}</td>                    
+                    <td style="padding: 4px;">{{revenue.revper}}</td>
+                     </tr>
+                     
+                 </table>
+            </div>
+          </div>
+
+        <div class="col-sm-4">
+            <div class="well" style="height:310px;background-color:#FFF;border-radius: 12px;">
+                <h4>Shops</h4>
+                <div class="editimgcss"><img src="assets/editimg.png" style="margin-top:-54px;"></div>
+                <p><app-doughnut-chart></app-doughnut-chart></p> 
+            
+
+
+                <div style="margin-top: -122px;margin-left: -230px;">
+                    <ul class="list-horizontal4">
+                        <li>60%</li>     
+                      </ul>  
+                      <ul class="list-horizontal5" style="margin-left: 282px;margin-top: -37px;">    
+                        <li>20%</li>    
+                      </ul>   
+                       <ul class="list-horizontal6"  style="margin-left: 350px;margin-top: -37px;">    
+                        <li>16%</li>    
+                      </ul>
+
+
+                      <ul class="list-horizontal7"  style="margin-left: 442px;margin-top: -37px;">    
+                        <li>4%</li>    
+                      </ul>
+
+
+                      <div style="margin-top:-20px;">
+                        <ul style="margin-left: 196px;">
+                            <li style="display:inline;padding:10px;">Bananas</li>
+                            <li style="display:inline;padding:16px;">bloom</li>
+                            <li style="display:inline;padding:15px;">Craftshoes</li>
+                            <li style="display:inline;padding:10px;">Coral</li>
+                        </ul>
+
+                      </div>
+                      
+
+
+
+                    </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

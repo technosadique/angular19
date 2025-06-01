@@ -1,0 +1,50 @@
+<style>
+ @media (min-width: 280px) {
+  .barchartcss{height:320px;width:215px;}  
+} 
+
+@media (min-width: 320px) {
+  .barchartcss{height:320px;width:255px;}  
+}
+@media (min-width: 360px) {
+  .barchartcss{height:320px;width:260px;}  
+}
+@media (min-width: 375px) {
+  .barchartcss{height:320px;width:295px;}  
+}
+@media (min-width: 411px) {
+  .barchartcss{height:320px;width:345px;}  
+}
+@media (min-width: 414px) {
+  .barchartcss{height:320px;width:330px;}  
+}
+
+@media (min-width: 768px) {
+  .barchartcss{height:320px;width:418px;}  
+}
+
+@media (min-width: 1024px) {
+  .barchartcss{height:320px;width:455px;}  
+}
+
+@media (min-width: 1366px) {
+  .barchartcss{height:320px;width:465px;}  
+}
+
+
+
+
+
+</style>
+
+<div class="barchartcss">
+    <canvas baseChart 
+    [datasets]="barChartData"
+    [labels]="barChartLabels"
+    [options]="barChartOptions"
+    [plugins]="barChartPlugins"
+    [legend]="barChartLegend"
+    [chartType]="barChartType"    
+    >
+  </canvas>
+</div>

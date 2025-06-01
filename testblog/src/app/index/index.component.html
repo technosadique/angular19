@@ -7,7 +7,9 @@
 
   <div class="d-flex justify-content-between align-items-center mb-3">
     <h2 class="mb-0">Blog Table</h2>
-    <a routerLink="/create" class="btn btn-success">Create Blog</a>
+    <a routerLink="/create" class="btn btn-success">Create Blog</a> 
+    <span class="me-3 text-info">Welcome, {{ userEmail }}</span>
+    <button (click)="logout()" class="btn btn-success">Logout</button>
   </div>
 
   <table class="table table-bordered">
