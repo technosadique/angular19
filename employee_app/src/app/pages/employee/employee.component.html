@@ -1,0 +1,129 @@
+<div class="container-fluid mt-4">
+
+    <div class="row">
+
+        <div [class]="isSidePanelOpen()?'col-9':'col-12'">
+            <div class="card">
+                <div class="card-header bg-secondary">
+                    <div class="row">
+                        <div class="col-6 text-white">Employee Portal</div>
+                        <div class="col-6 text-end"><button class="btn btn-warning m-2" (click)="logout()">Logout</button> <button class="btn btn-warning" (click)="addNew()">Add New</button></div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered text-center">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Employee ID</th>
+                            <th>Name</th>
+                            <th>Contact No</th>
+                            <th>Email</th>
+                            <th>Department</th>
+                            <th>Role</th>
+                            <th>Gender</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Sample row -->
+                        @for(emp of empdata;track $index){
+                        <tr>
+                            <td>{{$index+1}}</td>
+                            <td>{{emp.employeeName}}</td>
+                            <td>{{emp.contactNo}}</td>
+                            <td>{{emp.emailId}}</td>
+                            <td>{{ getDeptName(emp.deptId) }}</td>
+                            <td>{{emp.role}}</td>
+                            <td>{{emp.gender}}</td>
+                            <td><button (click)="selectEmp(emp.id)" class="btn btn-primary m-2">Edit</button><button (click)="deleteEmp(emp.id)" class="btn btn-danger">Delete</button></td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+
+        @if(isSidePanelOpen()){
+ <div class="col-3">
+
+            <div class="card">
+                <div class="card-header bg-secondary">
+                    <div class="row">
+                        <div class="col-6 text-white">New Employee</div>
+                        <div class="col-6 text-end"><button class="btn btn-primary" (click)="close()">Close</button></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-body">             
+                    
+                    <form #empForm="ngForm" (ngSubmit)="addEmp(empForm.value)">
+                        <div class="mb-2">
+                            <label class="form-label">Employee Name</label>
+                            <input type="text" required #employeeName="ngModel" name="employeeName"
+                                placeholder="enter employeeName" [ngModel]="selectedemp?.employeeName"
+                                class="form-control">
+                        </div>
+                        <div class="mb-2">
+                            <label class="form-label">Contact No</label>
+                            <input type="text" required #contactNo="ngModel" name="contactNo"
+                                placeholder="enter contactNo" [ngModel]="selectedemp?.contactNo" class="form-control">
+                        </div>
+                        <div class="mb-2">
+                            <label class="form-label">Email</label>
+                            <input type="text" required #emailId="ngModel" name="emailId" placeholder="enter emailId"
+                                [ngModel]="selectedemp?.emailId" class="form-control">
+                        </div>
+                        <div class="mb-2">
+                            <label class="form-label">Parent Department</label>
+                            <select class="form-select" name="deptId" #deptId="ngModel"
+                                [ngModel]="selectedemp?.deptId">
+                                <option>Select department</option>
+
+                                <option [value]="dept.id" *ngFor="let dept of departmentData$ | async">
+                                        {{dept.name}}
+                                    </option>
+                            </select>
+                        </div>
+                        <div class="mb-2">
+                            <label class="form-label">Password</label>
+                            <input type="text" required #password="ngModel" name="password" placeholder="enter password"
+                                [ngModel]="selectedemp?.password" class="form-control">
+                        </div>
+                        <div class="mb-2">
+                            <label class="form-label">Role</label>
+                            <input type="text" required #role="ngModel" name="role" placeholder="enter role"
+                                [ngModel]="selectedemp?.role" class="form-control">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Gender</label>
+                            <select class="form-select" name="gender" #gender="ngModel"
+                                [ngModel]="selectedemp?.gender">
+                                <option>Select gender</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+
+                        @if(selectedemp){
+                        <button class="btn btn-primary" [disabled]="empForm.invalid">Update</button>
+                        }@else{
+                        <button class="btn btn-primary" [disabled]="empForm.invalid">SUbmit</button>
+                        }
+                    </form>
+               
+            </div>
+
+        </div>
+        }
+
+       
+
+
+
+    </div>
+</div>

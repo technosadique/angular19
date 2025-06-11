@@ -1,0 +1,216 @@
+<div class="row">
+
+    <div class="col-12" *ngIf="currentView=='List'">
+        <div class="card">
+            <div class="card-header bg-success">
+                <div class="row">
+                    <div class="col-6 text-white">Project List</div>
+                    <div class="col-6 text-end"><button class="btn btn-warning m-2" (click)="logout()">Logout</button> <button class="btn btn-primary" (click)="currentView='create'">Create
+                            New Project</button></div>
+                </div>
+            </div>
+
+            <div class="card-body">
+                <table class="table table-bordered text-center">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Project ID</th>
+                            <th>Project Name</th>
+                            <th>Client Name</th>
+                            <th>Start Date</th>
+                            <th>Lead By Employee</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Sample row -->
+                        @for(project of projectdata;track $index){
+                        <tr>
+                            <td>{{$index+1}}</td>
+                            <td>{{project.projectName}}</td>
+                            <td>{{project.clientName}}</td>
+                            <td>{{project.startDate}}</td>
+                            <td>{{ getEmployeeName(project.leadByEmpId) }}</td>
+                            <td><button (click)="selectProject(project.id)" class="btn btn-primary m-1">Edit</button>
+                                <button (click)="deleteProject(project.id)" class="btn btn-danger">Delete</button>
+                                <button (click)="onAddEmployees(project.id)" class="btn btn-info m-1">Employees</button>
+                            </td>
+
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <div class="col-12" *ngIf="currentView !=='List'">
+        <div class="card">
+            <div class="card-header bg-success">
+                <div class="row">
+                    <div class="col-6 text-white">New Project</div>
+                    <div class="col-6 text-end"><button class="btn btn-primary"
+                            (click)="currentView='List'">Close</button></div>
+                </div>
+            </div>
+
+            <div class="card-body">
+                <form #projectForm="ngForm" (ngSubmit)="addProject(projectForm.value)">
+                    <div class="mb-2">
+                        <label class="form-label">Project Name</label>
+                        <input type="text" required #projectName="ngModel" name="projectName"
+                            placeholder="enter projectName" [ngModel]="selectedproject?.projectName"
+                            class="form-control">
+                    </div>
+                    <div class="mb-2">
+                        <label class="form-label">client Name</label>
+                        <input type="text" required #clientName="ngModel" name="clientName"
+                            placeholder="enter clientName" [ngModel]="selectedproject?.clientName" class="form-control">
+                    </div>
+                    <div class="mb-2">
+                        <label class="form-label">start Date</label>
+                        <input type="date" required #startDate="ngModel" name="startDate" placeholder="enter startDate"
+                            [ngModel]="selectedproject?.startDate" class="form-control">
+                    </div>
+
+                    <div class="mb-2">
+                        <label class="form-label">Lead By EmpId</label>
+                        <select required name="leadByEmpId" class="form-control" #leadByEmpId="ngModel"
+                            [ngModel]="selectedproject?.leadByEmpId">
+
+                            <option>Select Employee</option>
+                            <option [value]="emp.id" *ngFor="let emp of employeeData$ | async">{{emp.employeeName}}
+                            </option>
+                        </select>
+
+                    </div>
+                    <div class="mb-2">
+                        <label class="form-label">contact Person</label>
+                        <input type="text" required #contactPerson="ngModel" name="contactPerson"
+                            placeholder="enter contactPerson" [ngModel]="selectedproject?.contactPerson"
+                            class="form-control">
+                    </div>
+
+                    <div class="mb-2">
+                        <label class="form-label">contact No</label>
+                        <input type="text" required #contactNo="ngModel" name="contactNo" placeholder="enter contactNo"
+                            [ngModel]="selectedproject?.contactNo" class="form-control">
+                    </div>
+
+                    <div class="mb-2">
+                        <label class="form-label">Email</label>
+                        <input type="text" required #emailId="ngModel" name="emailId" placeholder="enter emailId"
+                            [ngModel]="selectedproject?.emailId" class="form-control">
+                    </div>
+
+
+                    <button class="btn btn-primary" [disabled]="projectForm.invalid">Submit</button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Modal -->
+    <div #myModel class="modal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="employeeModalLabel">Project Employees</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                        (click)="closeModel()"></button>
+                </div>
+                <div class="modal-body">
+                    <form #projectemployeeForm="ngForm" (ngSubmit)="addNewProjectEmployee(projectemployeeForm.value)">
+                        <div class="row">
+                            <div class="col-3">
+                                <select required class="form-control" [(ngModel)]="empId" name="empId">
+
+                                    <option disabled>Select Employee</option>
+                                    <option [value]="emp.id" *ngFor="let emp of employeeData$ | async">
+                                        {{emp.employeeName}}
+                                    </option>
+                                </select>
+                            </div>
+
+                            <div class="col-3">
+                               
+
+                                <input type="text" placeholder="role" class="form-control" [(ngModel)]="role" name="role" required/>
+
+
+                                <input readonly id="projectId" type="hidden" [(ngModel)]="selectedProjectId"
+                                    [value]="selectedProjectId" #projectId="ngModel" name="projectId"
+                                    placeholder="projectId" class="form-control"
+                                    [ngModel]="selectedprojectemployee?.projectId">
+
+
+                                <input readonly id="isActive" type="hidden" [(ngModel)]="selectedisActive"
+                                    [value]="selectedisActive" #isActive="ngModel" name="isActive"
+                                    placeholder="isActive" class="form-control"
+                                    [ngModel]="selectedprojectemployee?.isActive">
+                            </div>
+                            <div class="col-3">                               
+
+                                    <input type="date" placeholder="assignedDate" class="form-control" [(ngModel)]="assignedDate" name="assignedDate" required/>
+
+                            </div>
+
+                            <div class="col-3">
+                                <button class="btn btn-sm btn-primary"
+                                    [disabled]="projectemployeeForm.invalid">Add</button>
+                            </div>
+                        </div>
+                    </form>
+
+                    <div class="row pt-3">
+                        <div class="col-12">
+                            <table class="table table-bordered text-center">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>Project Name</th>
+                                        <th>Employee Name</th>
+                                        <th>Status</th>
+                                        <th>Role</th>
+                                        <th>Assigned Date</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Sample row -->
+                                    @for(emp of projectemployeedata;track emp){
+                                    <tr>
+                                        <td>{{ getProjectName(emp.projectId) }}</td>
+                                        <td>{{ getEmployeeName(emp.empId) }}</td>
+                                        <td>{{emp.isActive}}</td>
+                                        <td>{{emp.role}}</td>
+                                        <td>{{ emp.assignedDate }}</td>
+
+                                    </tr>
+                                    }
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal"
+                        (click)="closeModel()">Close</button>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>

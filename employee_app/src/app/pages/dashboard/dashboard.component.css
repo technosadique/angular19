@@ -1,0 +1,19 @@
+card {
+      color: #fff;
+      border: none;
+    }
+    .card-blue {
+      background-color: #007bff;
+      color: #fff;
+    }
+    .card-green {
+      background-color: #218838;
+      color: #fff;
+    }
+    .card-yellow {
+      background-color: #ffc107;
+      color: #fff;
+    }
+    .section-title {
+      font-weight: bold;
+    }

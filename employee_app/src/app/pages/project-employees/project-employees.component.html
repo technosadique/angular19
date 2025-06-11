@@ -1,0 +1,41 @@
+<div class="row">
+
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header bg-success">
+                <div class="row">
+                    <div class="col-6 text-white">Project Employees List</div>
+                    <div class="col-6 text-end"><button class="btn btn-warning m-2" (click)="logout()">Logout</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-body">
+                <table class="table table-bordered text-center">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Project Name</th>
+                            <th>Employee Name</th>
+                            <th>Status</th>
+                            <th>Role</th>
+                            <th>Assigned Date</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Sample row -->
+                        @for(emp of projectemployeedata;track emp){
+                        <tr>
+                            <td>{{ getProjectName(emp.projectId) }}</td>
+                            <td>{{ getEmployeeName(emp.empId) }}</td>
+                            <td>{{emp.isActive}}</td>
+                            <td>{{emp.role}}</td>
+                            <td>{{ emp.assignedDate }}</td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

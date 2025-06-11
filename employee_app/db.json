@@ -1,0 +1,274 @@
+{
+  "users": [
+    {
+      "name": "Peter",
+      "email": "peter@test.com",
+      "age": "45",
+      "id": "1083"
+    },
+    {
+      "name": "Bruce",
+      "email": "bruce@test.com",
+      "age": 35,
+      "id": "fdb6"
+    },
+    {
+      "id": "d7b8",
+      "name": "jimmi",
+      "email": "jimmi@test.com",
+      "age": 36
+    },
+    {
+      "name": "Anil",
+      "email": "anil@test.com",
+      "age": 25,
+      "id": "e781"
+    },
+    {
+      "name": "tom",
+      "email": "tom@test.com",
+      "age": "23",
+      "id": "6974"
+    },
+    {
+      "id": "b69e",
+      "name": "sss",
+      "email": "sam@test.com",
+      "age": "23"
+    }
+  ],
+  "products": [
+    {
+      "name": "Surface Laptop 5",
+      "brand": "Microsoft",
+      "price": 777777,
+      "id": "154d"
+    },
+    {
+      "name": "Instax Mini 12 Instant Camera",
+      "brand": "fujifilm",
+      "price": 25000,
+      "id": "b8cc"
+    },
+    {
+      "id": "61aa",
+      "name": "EOS R50 Mirrorless Camera",
+      "brand": "canon",
+      "price": 18000
+    },
+    {
+      "id": "9c15",
+      "name": "Professional Series 750",
+      "brand": "Vitamix",
+      "price": 1000
+    },
+    {
+      "name": "Mobile",
+      "brand": "realme narzo",
+      "price": 12000,
+      "id": "e34a"
+    }
+  ],
+  "blogs": [
+    {
+      "title": "testerer",
+      "content": "my test",
+      "id": "c20b"
+    },
+    {
+      "title": "hello",
+      "content": "world",
+      "id": "f443"
+    },
+    {
+      "title": "aa",
+      "content": "aa",
+      "id": "2a35"
+    },
+    {
+      "title": "bbb",
+      "content": "bbb",
+      "id": "5fd4"
+    }
+  ],
+  "login": [
+    {
+      "username": "test",
+      "password": "123",
+      "id": "265f"
+    },
+    {
+      "id": "ed46",
+      "username": "test",
+      "password": "123"
+    },
+    {
+      "id": "9119",
+      "username": "sds",
+      "password": "sdsd"
+    },
+    {
+      "id": "b140",
+      "username": "fgfg",
+      "password": "fgf"
+    },
+    {
+      "id": "28c3",
+      "username": "fdf",
+      "password": "sdfsd"
+    },
+    {
+      "id": "b694",
+      "username": "aaa",
+      "password": "aaa"
+    }
+  ],
+  "employee": [
+    {
+      "employeeName": "MAZHAR",
+      "contactNo": "1111111111",
+      "emailId": "mazhar@test.com",
+      "deptId": "1",
+      "password": "123456",
+      "role": "aaaa",
+      "gender": "male",
+      "id": "274b"
+    },
+    {
+      "employeeName": "JASMIN",
+      "contactNo": "2222222222",
+      "emailId": "jasmin@test.com",
+      "deptId": "2",
+      "password": "123456",
+      "role": "bbbb",
+      "gender": "female",
+      "id": "8c2c"
+    },
+    {
+      "id": "7c0d",
+      "employeeName": "PAYAL",
+      "contactNo": "777777",
+      "emailId": "payal@test.com",
+      "deptId": "2",
+      "password": "454545",
+      "role": "aaaa",
+      "gender": "female"
+    },
+    {
+      "id": "c717",
+      "employeeName": "bruce",
+      "contactNo": "9999999999",
+      "emailId": "bruce@test.com",
+      "deptId": "3",
+      "password": "1111111111",
+      "role": "manager",
+      "gender": "male"
+    },
+    {
+      "id": "0fe0",
+      "employeeName": "sara",
+      "contactNo": "8888888888",
+      "emailId": "sara@test.com",
+      "deptId": "2",
+      "password": "555555",
+      "role": "tester",
+      "gender": "female"
+    },
+    {
+      "employeeName": "anil",
+      "contactNo": "7777777777",
+      "emailId": "anil@test.com",
+      "deptId": "4",
+      "password": "222222",
+      "role": "UI Developer",
+      "gender": "male",
+      "id": "67b8"
+    }
+  ],
+  "project": [
+    {
+      "projectName": "ERP",
+      "clientName": "flipkart",
+      "startDate": "2025-06-04",
+      "leadByEmpId": "274b",
+      "contactPerson": "alex",
+      "contactNo": "3333333333",
+      "emailId": "abc@test.com",
+      "id": "5354"
+    },
+    {
+      "projectName": "CRM",
+      "clientName": "amazon",
+      "startDate": "2025-06-05",
+      "leadByEmpId": "8c2c",
+      "contactPerson": "alex",
+      "contactNo": "232323232323",
+      "emailId": "abc@test.com",
+      "id": "2213"
+    },
+    {
+      "projectName": "Moodle",
+      "clientName": "IBM",
+      "startDate": "2025-06-30",
+      "leadByEmpId": "67b8",
+      "contactPerson": "william",
+      "contactNo": "8777777777",
+      "emailId": "william@test",
+      "id": "b0a4"
+    },
+    {
+      "id": "3601",
+      "projectName": "hhh",
+      "clientName": "hhhh",
+      "startDate": "2025-06-11",
+      "leadByEmpId": "8c2c",
+      "contactPerson": "hhhh",
+      "contactNo": "5545645645645",
+      "emailId": "hhh@hhh.com"
+    }
+  ],
+  "projectemployee": [
+    {
+      "id": "3ded",
+      "projectId": "5354",
+      "isActive": true,
+      "empId": "7c0d",
+      "role": "tester",
+      "assignedDate": "2025-06-07"
+    },
+    {
+      "id": "9f63",
+      "empId": "7c0d",
+      "role": "tester",
+      "projectId": "2213",
+      "isActive": true,
+      "assignedDate": "2025-06-10"
+    },
+    {
+      "id": "134d",
+      "empId": "274b",
+      "role": "developer",
+      "projectId": "b0a4",
+      "isActive": true,
+      "assignedDate": "2025-06-17"
+    }
+  ],
+  "department": [
+    {
+      "id": "1",
+      "name": "IT"
+    },
+    {
+      "id": "2",
+      "name": "HR"
+    },
+    {
+      "id": "3",
+      "name": "Finance"
+    },
+    {
+      "id": "4",
+      "name": "Marketing"
+    }
+  ]
+}

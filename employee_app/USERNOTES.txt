@@ -1,0 +1,15 @@
+Ref URL: https://www.itsolutionstuff.com/post/angular-19-crud-application-tutorial-exampleexample.html
+
+to run this project you need to start two servers in your local machine
+C:\Users\sadik\angular19\employee_app>ng serve
+C:\Users\sadik\api>npx json-server db.json
+
+#how to add bootstrap css 
+npm install bootstrap --save
+
+angular.json 
+----------------
+ "styles": [
+        "node_modules/bootstrap/dist/css/bootstrap.min.css",
+        "src/styles.css"
+      ],
