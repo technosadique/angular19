@@ -50,7 +50,7 @@ export class ProjectComponent {
 
   // get all project employee list
   getallprojectemployees(id: string) {
-    this.masterservice.getallprojectemployees().subscribe((data: Projectemployee[]) => {
+    this.masterservice.getprojectemployees().subscribe((data: Projectemployee[]) => {
       const record = data.filter(m => m.projectId == id)
       this.projectemployeedata = record;
       console.log(record);
@@ -61,7 +61,7 @@ export class ProjectComponent {
   // get employee name by empid
   getEmployeeName(id: string) {
     if (!this.employeeNameMap[id]) {
-      this.masterservice.find(id).subscribe((data: Employee) => {
+      this.masterservice.findEmp(id).subscribe((data: Employee) => {
         this.employeeNameMap[id] = data?.employeeName || id;
       });
       return 'Loading...'; // temporary text
@@ -72,7 +72,7 @@ export class ProjectComponent {
   // get project name by projectid
   getProjectName(id: string) {
     if (!this.projectNameMap[id]) {
-      this.masterservice.findproject(id).subscribe((data: Project) => {
+      this.masterservice.findProject(id).subscribe((data: Project) => {
         this.projectNameMap[id] = data?.projectName || id;
       });
       return 'Loading...'; // temporary text
@@ -83,7 +83,7 @@ export class ProjectComponent {
 
   // select single project by id
   selectProject(id: string) {
-    this.masterservice.findproject(id).subscribe((data: Project) => {
+    this.masterservice.findProject(id).subscribe((data: Project) => {
       console.log(data);
       this.currentView = 'create'
       this.selectedproject = data

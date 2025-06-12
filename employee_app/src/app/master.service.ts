@@ -18,34 +18,9 @@ export class MasterService {
     return this.http.get<Employee[]>(url)
   }
 
-  getdepartments(): Observable<Department[]> {
-    const url = "http://localhost:3000/department"
-    return this.http.get<Department[]>(url)
-  }
-
-  getprojects(): Observable<Project[]> {
-    const url = "http://localhost:3000/project"
-    return this.http.get<Project[]>(url)
-  }
-
   saveEmp(employee: Employee): Observable<Employee> {
     const url = "http://localhost:3000/employee"
     return this.http.post<Employee>(url, employee)
-  }
-
-  saveProject(project: Project): Observable<Project> {
-    const url = "http://localhost:3000/project"
-    return this.http.post<Project>(url, project)
-  }
-
-  saveProjectEmployee(projectemployee: Projectemployee): Observable<Projectemployee> {
-    const url = "http://localhost:3000/projectemployee"
-    return this.http.post<Projectemployee>(url, projectemployee)
-  }
-
-  getallprojectemployees(): Observable<Projectemployee[]> {
-    const url = "http://localhost:3000/projectemployee"
-    return this.http.get<Projectemployee[]>(url)
   }
 
   updateEmp(employee: Employee): Observable<Employee> {
@@ -53,14 +28,24 @@ export class MasterService {
     return this.http.put<Employee>(url + "/" + employee.id, employee)
   }
 
-  updateProject(project: Project): Observable<Project> {
-    const url = "http://localhost:3000/project"
-    return this.http.put<Project>(url + "/" + project.id, project)
-  }
-
   deleteEmp(id: string): Observable<Employee> {
     const url = "http://localhost:3000/employee"
     return this.http.delete<Employee>(url + "/" + id)
+  }
+  
+  findEmp(id: string): Observable<Employee> {
+    const url = "http://localhost:3000/employee"
+    return this.http.get<Employee>(url + "/" + id)
+  }
+
+  getprojects(): Observable<Project[]> {
+    const url = "http://localhost:3000/project"
+    return this.http.get<Project[]>(url)
+  }
+
+  updateProject(project: Project): Observable<Project> {
+    const url = "http://localhost:3000/project"
+    return this.http.put<Project>(url + "/" + project.id, project)
   }
 
   deleteProject(id: string): Observable<Project> {
@@ -68,24 +53,39 @@ export class MasterService {
     return this.http.delete<Project>(url + "/" + id)
   }
 
+  saveProject(project: Project): Observable<Project> {
+    const url = "http://localhost:3000/project"
+    return this.http.post<Project>(url, project)
+  }
+
+  findProject(id: string): Observable<Project> {
+    const url = "http://localhost:3000/project"
+    return this.http.get<Project>(url + "/" + id)
+  }
+
+  saveProjectEmployee(projectemployee: Projectemployee): Observable<Projectemployee> {
+    const url = "http://localhost:3000/projectemployee"
+    return this.http.post<Projectemployee>(url, projectemployee)
+  }
+
+  getprojectemployees(): Observable<Projectemployee[]> {
+    const url = "http://localhost:3000/projectemployee"
+    return this.http.get<Projectemployee[]>(url)
+  }
+
   deleteProjectEmp(id: string): Observable<Projectemployee> {
     const url = "http://localhost:3000/projectemployee"
     return this.http.delete<Projectemployee>(url + "/" + id)
   }
 
-  find(id: string): Observable<Employee> {
-    const url = "http://localhost:3000/employee"
-    return this.http.get<Employee>(url + "/" + id)
+  getdepartments(): Observable<Department[]> {
+    const url = "http://localhost:3000/department"
+    return this.http.get<Department[]>(url)
   }
 
-  finddept(id: string): Observable<Department> {
+  findDept(id: string): Observable<Department> {
     const url = "http://localhost:3000/department"
     return this.http.get<Department>(url + "/" + id)
-  }
-
-  findproject(id: string): Observable<Project> {
-    const url = "http://localhost:3000/project"
-    return this.http.get<Project>(url + "/" + id)
   }
 
 }

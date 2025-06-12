@@ -43,7 +43,7 @@ export class EmployeeComponent {
   // Fetch and Cache Department Name by ID
   getDeptName(id: string) {
     if (!this.deptNameMap[id]) {
-      this.masterservice.finddept(id).subscribe((data: Department) => {
+      this.masterservice.findDept(id).subscribe((data: Department) => {
         this.deptNameMap[id] = data?.name || id;
       });
       return 'Loading...'; // temporary text
@@ -75,7 +75,7 @@ export class EmployeeComponent {
 
   // Fetch Employee by ID and Open Side Panel
   selectEmp(id: string) {
-    this.masterservice.find(id).subscribe((data: Employee) => {
+    this.masterservice.findEmp(id).subscribe((data: Employee) => {
       this.isSidePanelOpen.set(true);
       this.selectedemp = data
     })

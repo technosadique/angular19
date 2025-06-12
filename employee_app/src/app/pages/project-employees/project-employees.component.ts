@@ -21,7 +21,7 @@ export class ProjectEmployeesComponent {
 
   // Initialize and Load Project Employee List
   ngOnInit() {
-    this.masterservice.getallprojectemployees().subscribe((data: Projectemployee[]) => {
+    this.masterservice.getprojectemployees().subscribe((data: Projectemployee[]) => {
       this.projectemployeedata = data
       console.log(data);
     })
@@ -30,7 +30,7 @@ export class ProjectEmployeesComponent {
   // Retrieve and Cache Employee Name by ID
   getEmployeeName(id: string) {
     if (!this.employeeNameMap[id]) {
-      this.masterservice.find(id).subscribe((data: Employee) => {
+      this.masterservice.findEmp(id).subscribe((data: Employee) => {
         this.employeeNameMap[id] = data?.employeeName || id;
       });
       return 'Loading...'; // temporary text
@@ -41,7 +41,7 @@ export class ProjectEmployeesComponent {
   //Retrieve and Cache Project Name by ID
   getProjectName(id: string) {
     if (!this.projectNameMap[id]) {
-      this.masterservice.findproject(id).subscribe((data: Project) => {
+      this.masterservice.findProject(id).subscribe((data: Project) => {
         this.projectNameMap[id] = data?.projectName || id;
       });
       return 'Loading...'; // temporary text

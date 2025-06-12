@@ -34,7 +34,7 @@ export class DashboardComponent {
     })
 
     // Count Project Employees
-    this.masterservice.getallprojectemployees().subscribe((data: Projectemployee[]) => {
+    this.masterservice.getprojectemployees().subscribe((data: Projectemployee[]) => {
       this.projectemployeecount = data.length
       console.log(data);
     })
