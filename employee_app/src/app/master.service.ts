@@ -68,6 +68,11 @@ export class MasterService {
     return this.http.delete<Project>(url + "/" + id)
   }
 
+  deleteProjectEmp(id: string): Observable<Projectemployee> {
+    const url = "http://localhost:3000/projectemployee"
+    return this.http.delete<Projectemployee>(url + "/" + id)
+  }
+
   find(id: string): Observable<Employee> {
     const url = "http://localhost:3000/employee"
     return this.http.get<Employee>(url + "/" + id)

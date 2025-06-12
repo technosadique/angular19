@@ -1,12 +1,14 @@
-<div class="row">
+<div class="row mt-2">
 
     <div class="col-12" *ngIf="currentView=='List'">
         <div class="card">
             <div class="card-header bg-success">
                 <div class="row">
                     <div class="col-6 text-white">Project List</div>
-                    <div class="col-6 text-end"><button class="btn btn-warning m-2" (click)="logout()">Logout</button> <button class="btn btn-primary" (click)="currentView='create'">Create
-                            New Project</button></div>
+                    <div class="col-6 text-end"><button class="btn btn-warning m-2" (click)="logout()">Logout</button>
+                        <button class="btn btn-primary" (click)="currentView='create'">Create
+                            New Project</button>
+                    </div>
                 </div>
             </div>
 
@@ -144,9 +146,10 @@
                             </div>
 
                             <div class="col-3">
-                               
 
-                                <input type="text" placeholder="role" class="form-control" [(ngModel)]="role" name="role" required/>
+
+                                <input type="text" placeholder="role" class="form-control" [(ngModel)]="role"
+                                    name="role" required />
 
 
                                 <input readonly id="projectId" type="hidden" [(ngModel)]="selectedProjectId"
@@ -160,9 +163,10 @@
                                     placeholder="isActive" class="form-control"
                                     [ngModel]="selectedprojectemployee?.isActive">
                             </div>
-                            <div class="col-3">                               
+                            <div class="col-3">
 
-                                    <input type="date" placeholder="assignedDate" class="form-control" [(ngModel)]="assignedDate" name="assignedDate" required/>
+                                <input type="date" placeholder="assignedDate" class="form-control"
+                                    [(ngModel)]="assignedDate" name="assignedDate" required />
 
                             </div>
 

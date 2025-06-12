@@ -49,6 +49,23 @@ export class ProjectEmployeesComponent {
     return this.projectNameMap[id];
   }
 
+
+  // Delete employee
+  delete(id: string) {
+    const confirmed = window.confirm("Are you sure to delete this record?");
+
+    if (confirmed) {
+      this.masterservice.deleteProjectEmp(id).subscribe((data: Projectemployee) => {
+        if (data) {
+          this.ngOnInit()
+          //this.successMessage="Deleted successfully"
+        }
+      })
+    }
+
+  }
+
+
   // Logout
   logout() {
     this.isAuthenticated = false;
