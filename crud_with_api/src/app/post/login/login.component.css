@@ -1,0 +1,20 @@
+    body {
+      background-color: #f8f9fa;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .login-card {
+      width: 380px;
+      height: 300px;
+      padding: 2rem;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      background-color: gray;
+      border-radius: 0.5rem;
+      position: absolute;
+      margin-left: 600px;
+      margin-top: 200px;
+      color:#fff;
+    }

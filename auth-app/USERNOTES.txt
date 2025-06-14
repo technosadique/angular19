@@ -1,0 +1,32 @@
+Ref URL: https://www.itsolutionstuff.com/post/angular-19-crud-application-tutorial-exampleexample.html
+
+to run this project you need to start two servers in your local machine
+C:\Users\sadik\angular19\blog>ng serve
+C:\Users\sadik\api>npx json-server db.json
+
+#how to add bootstrap css 
+npm install bootstrap --save
+
+angular.json 
+----------------
+ "styles": [
+        "node_modules/bootstrap/dist/css/bootstrap.min.css",
+        "src/styles.css"
+      ],
+	  
+#How to integrate login/logout in angular 
+--------------------------------------------
+- copy login folder from previous angular project into your project app folder 
+- copy auth folder from previous angular project into your project app folder 
+- copy auth.service.ts file into your project app folder 
+- create logout() in every page where needed
+    logout() {
+    this.isAuthenticated = false;
+    localStorage.removeItem('token');
+    this.router.navigate(['/login']);
+  }
+ - update app.routes.ts file 
+ import { AuthGuard } from './auth/auth.guard';
+ { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
+  #How to integrate angular material
+ C:\Users\sadik\angular19\auth-app>ng add @angular/material
