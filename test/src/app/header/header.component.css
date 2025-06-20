@@ -1,0 +1,33 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #1e7e49;
+  padding: 10px 20px;
+  color: white;
+}
+
+.logo {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.nav-items {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.logout-btn {
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  background-color: yellow;
+  color: black;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.nav-items a{
+    color:#fff;
+    text-decoration: none;
+}

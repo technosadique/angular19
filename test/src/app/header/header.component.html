@@ -1,21 +1,14 @@
-<nav class="navbar navbar-expand-sm bg-success navbar-success">
-  <!-- Brand -->
-  <a class="navbar-brand" >Coding with sadique</a>
+<div class="navbar">
+  <div class="logo">Coding with sadique</div>
 
-  <!-- Links -->
-  <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-    <li class="nav-item mx-2"><span *ngIf="loggedInUser" class="welcome-text nav-link text-white">Welcome, {{ loggedInUser }}</span></li>
-    <li class="nav-item mx-2">
-      <a class="nav-link active"   routerLink="/home">Home</a>
-    </li>
-    <li class="nav-item mx-2">
-      <a class="nav-link" routerLink="/about">About Us</a>
-    </li>
-    <li class="nav-item mx-2">
-      <a class="nav-link" routerLink="/contact">Contact Us</a>
-    </li>
-    
-    
-    
-  </ul>
-</nav>
+  <div class="nav-items">
+    <span class="welcome">Welcome, Admin</span>
+    <a routerLink="/home">Home</a>
+    <a routerLink="/about">About Us</a>
+    <a routerLink="/contact">Contact Us</a>
+    <button class="logout-btn" (click)="logout()">Logout</button>
+  </div>
+</div>
+
+<router-outlet></router-outlet>
+

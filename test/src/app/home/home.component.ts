@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -7,5 +8,13 @@ import { Component } from '@angular/core';
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
+isAuthenticated:boolean=false
+  constructor(private router:Router){}
+
+    logout() {
+    this.isAuthenticated = false;
+    localStorage.removeItem('token');
+    this.router.navigate(['/login']);
+  }
 
 }

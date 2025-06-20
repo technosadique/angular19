@@ -1,0 +1,89 @@
+Ref URL: https://www.itsolutionstuff.com/post/angular-19-crud-application-tutorial-exampleexample.html
+
+to run this project you need to start two servers in your local machine
+C:\Users\sadik\angular19\crud_with_mysql>node server.js
+C:\Users\sadik\angular19\crud_with_mysql>ng serve
+
+
+#how to add bootstrap css 
+npm install bootstrap --save
+
+angular.json 
+----------------
+ "styles": [
+        "node_modules/bootstrap/dist/css/bootstrap.min.css",
+        "src/styles.css"
+      ],
+	  
+#How to integrate login/logout in angular 
+--------------------------------------------
+- copy login folder from previous angular project into your project app folder 
+- copy auth folder from previous angular project into your project app folder 
+- copy auth.service.ts file into your project app folder 
+- create logout() in every page where needed
+    logout() {
+    this.isAuthenticated = false;
+    localStorage.removeItem('token');
+    this.router.navigate(['/login']);
+  }
+ - update app.routes.ts file 
+ import { AuthGuard } from './auth/auth.guard';
+ { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
+ 
+  #How to integrate angular material
+ C:\Users\sadik\angular19\crud_with_mysql>ng add @angular/material
+ 
+ #How to create crud with anular+mysql
+1. Create server.js in root folder 
+const express = require('express');
+const cors = require('cors');
+const mysql = require('mysql2');
+
+const app = express();
+app.use(cors());
+app.use(express.json());
+
+// MySQL connection
+const db = mysql.createConnection({
+  host: 'localhost',
+  user: 'root',
+  password: '', // change if you have a password
+  database: 'testdb'
+});
+
+// Get all users
+app.get('/users', (req, res) => {
+  db.query('SELECT * FROM users', (err, results) => {
+    if (err) return res.status(500).send(err);
+    res.json(results);
+  });
+});
+
+// Add new user
+app.post('/users', (req, res) => {
+  const { name, email } = req.body;
+  db.query('INSERT INTO users (name, email) VALUES (?, ?)', [name, email], (err) => {
+    if (err) return res.status(500).send(err);
+    res.sendStatus(200);
+  });
+});
+
+// Start server
+app.listen(3000, () => console.log('Server running on http://localhost:3000'));
+
+2. create table in mysql 
+CREATE DATABASE angular_crud;
+USE angular_crud;
+
+CREATE TABLE users (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(100),
+  email VARCHAR(100)
+);
+
+3. set up new angular project like 
+C:\Users\sadik\angular19\>ng new crud_with_mysql
+
+
+
+ 

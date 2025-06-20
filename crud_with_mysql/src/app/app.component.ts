@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { HeaderComponent } from "./header/header.component";
 
 @Component({
   selector: 'app-root',
@@ -9,5 +8,5 @@ import { HeaderComponent } from "./header/header.component";
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'test';
+  title = 'crud_with_mysql';
 }

@@ -1,20 +1,28 @@
 import { NgIf } from '@angular/common';
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-header',
-  imports: [RouterLink,NgIf],
+ imports: [RouterLink,RouterOutlet],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })
 export class HeaderComponent {
     loggedInUser: string | null = null;
-    user= {name: 'John Doe'};
-
+    user= {name: 'Admin'};
+isAuthenticated:boolean=false
 
   ngOnInit(): void {   
     localStorage.setItem('currentUser', this.user.name);
     this.loggedInUser = localStorage.getItem('currentUser');
+  }
+constructor(private router:Router){}
+
+  logout() {
+    this.isAuthenticated = false;
+    localStorage.removeItem('token');
+    this.router.navigate(['/login']);
   }
 }
